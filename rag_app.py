@@ -8,21 +8,21 @@ from langchain.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain.memory import ConversationBufferMemory
 
-# FIXED IMPORTS - Updated for latest LangChain
+
 try:
     from langchain_community.chat_message_histories import ChatMessageHistory
 except ImportError:
-    from langchain.memory import ChatMessageHistory  # Fallback
+    from langchain.memory import ChatMessageHistory  
 
 from huggingface_hub import InferenceClient
 from datetime import datetime
 import warnings
 
-# Suppress warnings
+
 warnings.filterwarnings('ignore', category=UserWarning)
 warnings.filterwarnings('ignore', category=DeprecationWarning)
 
-# Page config
+
 st.set_page_config(
     page_title="PDF Q&A Assistant",
     page_icon="🤖",
@@ -30,7 +30,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS
+
 st.markdown("""
 <style>
     .main-header {
@@ -169,11 +169,11 @@ def process_pdf(pdf_file):
         status_text.text("🧠 Creating embeddings (this may take a moment)...")
         progress_bar.progress(60)
         
-        # Use a more lightweight embedding model for better compatibility
+        
         try:
             embeddings = HuggingFaceEmbeddings(
                 model_name="sentence-transformers/all-MiniLM-L6-v2",
-                model_kwargs={'device': 'cpu'}  # Force CPU to avoid GPU issues
+                model_kwargs={'device': 'cpu'}  
             )
         except Exception as e:
             st.error(f"❌ Error creating embeddings: {e}")
@@ -626,3 +626,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
