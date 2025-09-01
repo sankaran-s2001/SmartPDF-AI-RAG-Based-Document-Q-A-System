@@ -517,6 +517,7 @@ def main():
                         "What's the cheapest engineering college in Tamil Nadu?",
                         "How long is a BCom course?"
                     ]
+                    st.markdown("💡 **Example questions:**\n\n" + "\n".join([f"- {q}" for q in examples]))
                 else:
                     examples = [
                         "What is this document about?",
@@ -526,7 +527,7 @@ def main():
                         "Explain the methodology used",
                         "What are the recommendations?"
                     ]
-                st.markdown("💡 **Example questions:**\n\n" + "\n".join([f"- {q}" for q in examples]))
+                    st.markdown("💡 **Example questions:**\n\n" + "\n".join([f"- {q}" for q in examples]))
         
         # Process question
         if ask_button and question:
@@ -625,3 +626,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
